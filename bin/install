@@ -67,8 +67,9 @@ get_filename() {
     local binary_name="$1"
     local platform="$2"
     local arch_name="$3"
+    local version="$4"
 
-    echo "${binary_name}_${platform}-${arch_name}"
+    echo "${binary_name}_${version:1}_${platform}_${arch_name}"
 }
 
 get_download_url() {
@@ -77,7 +78,7 @@ get_download_url() {
     local binary_name="$3"
     local arch_name="$4"
     local filename
-    filename="$(get_filename "${binary_name}" "${platform}" "${arch_name}")"
+    filename="$(get_filename "${binary_name}" "${platform}" "${arch_name}" "${version}")"
 
     local github_repo="joemiller/vault-token-helper"
 
